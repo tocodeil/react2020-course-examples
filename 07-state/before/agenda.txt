@@ -1,0 +1,9 @@
+# State
+
+* what is state
+
+* Counter component
+
+* Add delta to Counter's state
+
+* Careful: mutability

@@ -1,0 +1,10 @@
+# Props Agenda
+
+* Working on a project with multiple components (files)
+
+* Passing and accepting props
+
+* What can you pass as props
+
+* default property values
+

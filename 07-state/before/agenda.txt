@@ -1,9 +1,11 @@
 # State
 
-* what is state
+1. What is state
 
-* Counter component
+2. Counter component
 
-* Add delta to Counter's state
+3. Add delta to Counter's state
 
-* Careful: mutability
+4. Careful: mutability
+  - Trying to save an object in state
+  - React won't detect the change

@@ -13,3 +13,6 @@
   - npx webpack-dev-server -d
   - npx webpack -p
 
+4. Creating a new component
+  - Add a new JavaScript file
+  - Import the component and show it on screen

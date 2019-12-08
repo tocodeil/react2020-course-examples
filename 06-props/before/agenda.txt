@@ -1,10 +1,9 @@
 # Props Agenda
 
-* Working on a project with multiple components (files)
+1. Passing and accepting props
 
-* Passing and accepting props
+2. What can you pass as props:
+  - Passing numbers
+  - Passing arrays
 
-* What can you pass as props
-
-* default property values
-
+3. Default property values

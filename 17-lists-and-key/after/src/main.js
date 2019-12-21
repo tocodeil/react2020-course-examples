@@ -1,19 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import _ from 'lodash';
 import { useState } from 'react';
+import _ from 'lodash';
 
 function CheckableList(props) {
   const { items } = props;
-  const [nonce, setNonce] = useState(0);
+  const [ count, setCount ] = useState(0);
 
   function reset() {
-    setNonce(v => v + 1);
+    setCount(c => c + 1);
   }
 
   return (
-    <ul key={nonce}>
-      <button onClick={reset}>Reset</button>
+    <>
+    <button onClick={reset}>Unselect All</button>
+    <ul key={count}>
       {items.map(item => (
         <li key={item}>
           <label>            
@@ -23,6 +24,7 @@ function CheckableList(props) {
         </li>
       ))}
     </ul>
+    </>
   );
 }
 
@@ -31,7 +33,7 @@ const App = () => {
   const [items, setItems] = useState(['one', 'two', 'three', 'four', 'five']);
 
   function shuffle() {
-    setItems(_.shuffle(items));
+    setItems(_.shuffle(items));         
   }
 
   return (

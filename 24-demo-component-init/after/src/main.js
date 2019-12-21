@@ -5,37 +5,24 @@ import { useState, useEffect } from 'react';
 function Timer(props) {
   const [ticks, setTicks] = useState(0);
 
-  function tick() {
-    setTicks(val => val + 1);
-  }
-
   useEffect(function() {
-    const timer = setInterval(tick, 1000);
-
-    return function cancel() {
+    // What to do
+    const timer = setInterval(function() {
+      console.log('Ouch!');
+      setTicks(t => t + 1);
+    }, 1000);
+    
+    // What to undo
+    return function abort() {
       clearInterval(timer);
     }
+    
+    // When to undo/do
   }, []);
-
-  return (
-    <p>Ticks: {ticks}</p>
-  );
-}
-
-function Timer(props) {
-  const [ticks, setTicks] = useState(0);
 
   function tick() {
     setTicks(val => val + 1);
   }
-
-  useEffect(function() {
-    const timer = setInterval(tick, 1000);
-
-    return function cancel() {
-      clearInterval(timer);
-    }
-  }, []);
 
   return (
     <p>Ticks: {ticks}</p>

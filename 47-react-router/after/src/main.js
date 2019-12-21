@@ -15,7 +15,7 @@ export default function App() {
         <Menu />
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
-        <Switch>
+          <Switch>
           <Route path="/about">
             <About />
           </Route>
@@ -25,7 +25,8 @@ export default function App() {
           <Route path="/">
             <Home />
           </Route>
-        </Switch>
+          </Switch>
+
       </div>
     </Router>
   );
@@ -37,7 +38,6 @@ function Menu() {
       <ul>
         <li>
           <Link to="/">Home</Link>
-          <a href='/'>Home</a>
         </li>
         <li>
           <Link to="/about">About</Link>

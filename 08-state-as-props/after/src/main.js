@@ -1,7 +1,7 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { useState } from 'react';
 
-import ReactDOM from 'react-dom';
 import Counter from './counter';
 
 const App = () => {
@@ -19,7 +19,6 @@ const App = () => {
         <input type="number" value={delta} onChange={handleChangeDelta} />
       </label>
 
-      <h2>Counters:</h2>
       <Counter delta={delta} />
       <Counter delta={delta} />
     </div>

@@ -20,6 +20,7 @@ export default function App() {
           <Route path="/about">
             <About />
           </Route>
+          
           <Route path="/users/:id">
             <Users />
           </Route>
@@ -38,7 +39,6 @@ function Menu() {
       <ul>
         <li>
           <Link to="/">Home</Link>
-          <a href='/'>Home</a>
         </li>
         <li>
           <Link to="/about">About</Link>
@@ -61,6 +61,9 @@ function About() {
 }
 
 const Users = function Users() {
+  // useParams returns a params object
+  // { id: 10 }
+  // /users/:id/text/:name/:foo/:bar
   const { id } = useParams();
   const users = {
     1: 'brad',

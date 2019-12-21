@@ -4,17 +4,10 @@ import { useState, useEffect } from 'react';
 import Fiver from './fiver';
 import ColorPalette from './colors';
 
-
 function ColorSelector(props) {
   console.log('Color Selector');
   const [ticks, setTicks] = useState(0);
   const [color, setColor] = useState('#000000');
-
-  useEffect(function() {
-    if (ticks % 7 === 0) {
-      setColor('#000000');
-    }
-  }, [ticks]);
 
   return (
     <div>

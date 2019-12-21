@@ -1,14 +1,20 @@
 import { createStore, combineReducers } from 'redux';
 import produce from 'immer';
+import rooms from './reducers/room';
 import messages from './reducers/messages';
-import rooms from './reducers/rooms';
 import account from './reducers/account';
 
-function nextId(items) {
-  return Math.max(...items.map(i => i.id)) + 1;
+/*
+function reducer(state, action) {
+  return {
+    rooms: roomsReducer(state.rooms, action),
+    messages: messagesReducer(state.messages, action),
+    account: accountReducer(state.account, action)
+  }
 }
+*/
 
-const reducer = combineReducers({ messages, rooms, account });
+const reducer = combineReducers({ rooms, messages, account })
 
 const store = createStore(reducer);
 window.store = store;

@@ -2,24 +2,33 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { useState, useEffect, useRef } from 'react';
 import YouTubePlayer from 'youtube-player';
+import './main.css';
+
+// aS41Y_eyNrU
 
 function YoutubePlayer(props) {
-  const [videoId, setVideoId] = useState('');
-  const playerDiv = useRef(null);
-  const player = useRef(null);
+  const [videoId, setVideoId] = useState('M7lc1UVf-VE');
+  const [isPlaying, setIsPlaying] = useState(false);
+  const playerDivRef = useRef(null);
+  const playerRef = useRef(null);
 
   useEffect(function() {
-    player.current = new YouTubePlayer(playerDiv.current);
+    playerRef.current = YouTubePlayer(playerDivRef.current);
   }, []);
 
   useEffect(function() {
-    player.current.loadVideoById(videoId);
+    const player = playerRef.current;
+    player.loadVideoById(videoId);
+    player.playVideo();
   }, [videoId]);
+
 
   return (
     <div>
+      <div>
       <input type="text" value={videoId} onChange={(e) => setVideoId(e.target.value)} />
-      <div ref={playerDiv} />
+      </div>
+      <div className='player-div' ref={playerDivRef} />
     </div>
   );
 }

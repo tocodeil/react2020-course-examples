@@ -1,38 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { useState, useEffect } from 'react';
 
-function withTimer(Component) {
-  return class WithTimer extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = { ticks: 0 };
-    }
+function withClock(Component) {
+  return function WithClock(props) {
+    const [ticks, setTicks] = useState(0);
 
-    componentDidMount() {
-      this.timer = setInterval(this.tick.bind(this), 1000);
-    }
+    useEffect(function() {
+      setInterval(function() {
+        setTicks(t => t + 1);
+      }, 1000);
+    }, []);
 
-    componentWillUnmount() {
-      clearInterval(this.timer);
-    }
-
-    tick() {
-      this.setState(state => ({ ticks: state.ticks + 1 }))
-    }
-
-    render() {
-      const { ticks } = this.state;
-
-      return (
-        <Component ticks={ticks} {...this.props} />
-      );
-    }
+    return <Component {...props} ticks={ticks} />
   }
 }
 
-const NewsTicker = withTimer(class NewsTicker extends React.Component {
+
+const NewsTicker = withClock(class NewsTicker extends React.Component {
   render() {
-    const { items, ticks } = this.props;
+    const { ticks, items } = this.props;
     const itemIndex = ticks % items.length;
 
     return (
@@ -41,8 +28,12 @@ const NewsTicker = withTimer(class NewsTicker extends React.Component {
   }
 });
 
+const DoubleClock = withClock(function DoubleClock(props) {
+  const { ticks } = props;
+  return <p>{ticks * 2}</p>
+});
 
-const Clock = withTimer(class Clock extends React.Component {  
+const Clock = withClock(class Clock extends React.Component {  
   render() {
     const { ticks } = this.props;
 
@@ -66,6 +57,7 @@ const App = () => {
     <div>
       <Clock />
       <NewsTicker items={items} />
+      <DoubleClock />
     </div>
   )
 };

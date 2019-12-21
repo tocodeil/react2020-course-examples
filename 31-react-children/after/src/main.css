@@ -1,0 +1,33 @@
+.app {
+    margin: 10px auto;
+    width: 300px;
+    padding: 20px;
+  }
+  .page {
+    margin-top: 20px;
+  }
+
+  .page label {
+    display: block;
+    margin: 10px;
+  }
+
+  .page label span {
+    display: inline-block;
+    width: 80px;
+  }
+
+  .page ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .page ul label {
+    margin-left: 0;
+  }
+
+  .page ul li {
+    margin: 10px;
+    margin-left: 0;
+  }
+

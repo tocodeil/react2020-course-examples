@@ -73,9 +73,9 @@ export function MyForm(props) {
 
   function pageComponent(pageIndex) {
     const allChildProps = { name, setName, password, setPassword, hobbies, setHobbies };
-
-    const child = React.Children.toArray(props.children)[pageIndex];
-    return React.cloneElement(child, allChildProps);
+    const pages = React.Children.toArray(props.children);
+    const page = pages[pageIndex];
+    return React.cloneElement(page, allChildProps);
   }  
 
   return (

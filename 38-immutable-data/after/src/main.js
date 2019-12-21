@@ -1,14 +1,10 @@
 import produce from 'immer';
 
-const changeTextOfLastMessageInAnImmutableWay = produce(draft => {
-  draft.messages[2].text = 'good morning';
-});
-
 const setLastMessageText = produce((draft, newText) => {
   const lastIndex = draft.messages.length - 1;
-
   draft.messages[lastIndex].text = newText;
 });
+
 
 const state = {
   user: 'ynon',
@@ -22,6 +18,7 @@ const state = {
 const newState = setLastMessageText(state, 'good morning');
 console.log(newState);
 
+// These asserts are going to fail
 console.assert(state !== newState);
 console.assert(state.user === newState.user);
 console.assert(state.messages !== newState.messages);

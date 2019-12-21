@@ -3,11 +3,16 @@ import ReactDOM from 'react-dom';
 import Person from './person';
 
 const App = () => {
+  const colors = ['red', 'blue'];
+  const p = Math.random();
 
   return (
     <div>
-      <h1>Hello World</h1>
-      <Person />
+      <Person 
+  
+      favoriteColors={colors}
+      show={p > 0.5}
+      />
     </div>
   )
 };

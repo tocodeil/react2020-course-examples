@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: './src/main.js',
@@ -9,7 +10,7 @@ module.exports = {
     overlay: true,
   },
   module: {
-    rules: [
+    rules: [      
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
@@ -19,7 +20,15 @@ module.exports = {
             presets: ['@babel/preset-react'],
           }
         }
-      }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          { loader: MiniCssExtractPlugin.loader, },
+          'css-loader',
+        ],
+      },
+      
     ]
   },
   output: {
@@ -29,6 +38,11 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './html/index.html',
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+      ignoreOrder: true,
     }),
     new CleanWebpackPlugin(),
   ]

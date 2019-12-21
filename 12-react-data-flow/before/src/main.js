@@ -39,7 +39,7 @@ function Counter(props) {
     <div>
       <pre>Debug: count = {count}</pre>
 
-      <Display score={count} reset={reset} />
+      <Display />
       <button onClick={inc}>Click Me</button>
     </div>
   );
@@ -50,10 +50,10 @@ const App = () => {
 
   return (
     <div>
-      <Counter maxValue={maxValue} setMaxValue={setMaxValue} />
-      <Counter maxValue={maxValue} setMaxValue={setMaxValue} />
-      <Counter maxValue={maxValue} setMaxValue={setMaxValue} />
-      <Counter maxValue={maxValue} setMaxValue={setMaxValue} />
+      <Counter  />
+      <Counter  />
+      <Counter  />
+      <Counter  />
     </div>
   )
 };

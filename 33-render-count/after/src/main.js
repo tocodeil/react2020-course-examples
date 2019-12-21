@@ -6,6 +6,7 @@ import { useState } from 'react';
 function ColorBox(props) {
   const { start, spin, onClick, id } = props;
   const color = tinycolor(start).spin(spin).toString();
+  console.log('ColorBox');
 
   return (
     <div
@@ -23,6 +24,8 @@ function ColorBox(props) {
 }
 
 function ColorPalette(props) {
+  console.log('ColorPalette');
+
   const { start } = props;
   const [deletedBoxes, setDeletedBoxes] = useState(new Set());
 
@@ -51,7 +54,7 @@ function ColorPalette(props) {
 function ColorSelector(props) {
   const [ticks, setTicks] = useState(0);
   const [color, setColor] = useState('#000000');
-
+  console.log('ColorSelector');
   return (
     <div>
       <button onClick={() => setTicks(v => v + 1)}>Click Me ... {ticks}</button>

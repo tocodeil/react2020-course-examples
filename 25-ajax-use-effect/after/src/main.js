@@ -3,25 +3,33 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import { useState, useEffect } from 'react';
 
+function ShowCharacterInfo(props) {
+  const { data } = props;
+  return (
+    <>
+    <p><b>Name:</b> {data.name}</p>
+    <p><b>Hair Color:</b> {data.hair_color}</p>
+    </>
+  )
+}
+
 function StarwarsCharacter(props) {
-  const [data, setData] = useState({});
+  const [data, setData] = useState(null);
   const { id } = props;
 
   useEffect(function() {
-    const xhr = $.getJSON(`https://swapi.co/api/people/${id}/`, function success(data) {
-      setData(data);
-    });
+    setData(null);
+    const $xhr = $.getJSON(`https://swapi.co/api/people/${id}/`, setData);
 
-    return function cancel() {
-      setData({ id });
-      xhr.abort();
+    return function abort() {
+      $xhr.abort();
     }
   }, [id]);
-  
+
   return (
     <div>
-      <p><b>Name:</b> {data.name}</p>
-      <p><b>Hair Color:</b> {data.hair_color}</p>
+      <pre>Debug: id = {id}</pre>
+      {data ? <ShowCharacterInfo data={data} /> : 'Loading, please wait'}
     </div>
   );
 }

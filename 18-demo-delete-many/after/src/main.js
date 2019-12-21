@@ -4,26 +4,21 @@ import { useState } from "react";
 
 function SelectableList(props) {
   const { items } = props;
-  const [selectedItems, setSelectedItems] = useState([]);
-  const [activeItems, setActiveItems] = useState(items);
-
-  function remove() {
-    const toDeleteSet = new Set(selectedItems);
-    setActiveItems(activeItems.filter(item => ! toDeleteSet.has(item)));
-    setSelectedItems([]);
-  }
+  const [ activeItems, setActiveItems ] = useState(items);
+  const [ selectedItems, setSelectedItems ] = useState([]);
 
   function reset() {
     setActiveItems(items);
     setSelectedItems([]);
   }
 
-  function selectItem(e) {
-    const checked = e.target.checked;
-    const item = e.target.parentElement.textContent;
+  function deleteSelectedItems() {
+    setActiveItems(activeItems.filter(x => !selectedItems.includes(x)));
+  }
 
-    if (checked) {
-      setSelectedItems(selectedItems.concat([item]));
+  function toggleItem(add, item) {
+    if (add) {
+      setSelectedItems([...selectedItems, item]);      
     } else {
       setSelectedItems(selectedItems.filter(x => x !== item));
     }
@@ -31,22 +26,24 @@ function SelectableList(props) {
 
   return (
     <>
-      <p>Selected Itmes: {selectedItems.join(", ")}</p>
-      <button onClick={remove}>Delete</button>
+      <button onClick={deleteSelectedItems}>Delete</button>
       <button onClick={reset}>Reset</button>
-      <ul>
-        {activeItems.map(item => (
-          <li key={item} style={{ direction: "rtl" }}>
-            <label>
+      <ul>        
+        {
+          activeItems.map((item, index) => (
+            <li key={item}>
+              <label>
+                <input 
+                  type="checkbox" 
+                  onChange={(e) => toggleItem(e.target.checked, item)} 
+                  checked={selectedItems.includes(item)}
+                  />
               {item}
-              <input
-                type="checkbox"
-                onChange={selectItem}
-                checked={selectedItems.includes(item)}
-              />
-            </label>
-          </li>
-        ))}
+              </label>
+
+            </li>
+          ))
+        }
       </ul>
     </>
   );

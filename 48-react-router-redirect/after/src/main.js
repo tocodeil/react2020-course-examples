@@ -18,8 +18,8 @@ export default function App() {
   return (
     <Provider store={store}>
       <Router>
-        <Flash />
         <div>
+          <Flash />
           <Switch>
             <Route path="/user">
               <User />
@@ -34,13 +34,29 @@ export default function App() {
   );
 }
 
+
 const Flash = withRouter(function Flash(props) {
   const { state } = props.location;
+
   if (state && state.flash) {
-    return <p>{state.flash}</p>
+    return <p className='flash'>{state.flash}</p>
   }
+
   return false;
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // main.js
 const root = document.querySelector('main');

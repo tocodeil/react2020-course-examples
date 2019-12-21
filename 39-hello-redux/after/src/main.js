@@ -1,25 +1,6 @@
-import { createStore } from 'redux';
 import produce from 'immer';
-
-export function receivedRooms(newListOfRooms) {
-  return { type: 'RECEIVED_ROOMS', payload: newListOfRooms };
-}
-
-export function setActiveRoom(roomId) {
-  return { type: 'SET_ACTIVE_ROOM', payload: roomId };
-}
-
-export function createRoom(roomName) {
-  return { type: 'CREATE_ROOM', payload: roomName };
-}
-
-export function receivedMessage(message) {
-  return { type: 'RECEIVED_MESSAGE', payload: message };
-}
-
-export function setUsername(newUsername) {
-  return { type: 'SET_USERNAME', payload: newUsername };
-}
+import { createStore } from 'redux';
+// npm install --save-dev redux
 
 const initialState = {
   rooms: [
@@ -33,30 +14,16 @@ const initialState = {
   username: "guest",
 };
 
-function nextId(items) {
-  return Math.max(...items.map(i => i.id)) + 1;
-}
-
+// { type: '...', payload: '...' }
 const reducer = produce((state, action) => {
+  // Inside immer - behave "mutable" => "immutable data"
   switch(action.type) {
     case 'SET_USERNAME':
       state.username = action.payload;
       break;
 
-    case 'RECEIVED_MESSAGE':      
+    case 'NEW_MESSAGE':
       state.messages.push(action.payload);
-      break;
-
-    case 'CREATE_ROOM':
-      state.rooms.push({ id: nextId(state.rooms), name: action.payload });
-      break;
-
-    case 'SET_ACTIVE_ROOM':
-      state.activeRoomId = action.payload;
-      break;
-
-    case 'RECEIVED_ROOMS':
-      state.rooms = action.payload;
       break;
   }
 }, initialState);

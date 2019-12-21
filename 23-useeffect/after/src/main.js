@@ -6,7 +6,7 @@ function DocumentTitleChanger(props) {
   const [title, setTitle] = useState(document.title);  
 
   useEffect(function() {
-    document.title = title;
+    document.title = title;    
   }, [title]);
 
   return (

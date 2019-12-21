@@ -5,29 +5,23 @@ import { useState, useRef } from 'react';
 const MultiSelectAndDeleteList = (props) => {
   const { items } = props;
   const [ visibleItems, setVisibleItems ] = useState(items);  
-  const root = useRef(null);
+  const ul = useRef(null);
 
   function reset() {
     setVisibleItems(items);
   }
 
   function deleteSelected() {
-    const el = root.current;
-    const checkedInputs = el.querySelectorAll('input:checked');
-    const selectedItems = new Set();
-    for (let checkedInput of checkedInputs) {
-      const name = checkedInput.parentElement.textContent;
-      selectedItems.add(name);
-    }
-
-    setVisibleItems(visibleItems.filter(item => !selectedItems.has(item)));
+    const selectedInputs = ul.current.querySelectorAll('input:checked');
+    const selectedItems = Array.from(selectedInputs).map(inp => inp.parentElement.textContent);
+    setVisibleItems(v => v.filter(x => !selectedItems.includes(x)));
   }
 
   return (
     <div>
       <button onClick={reset}>Reset</button>
       <button onClick={deleteSelected}>Delete</button>
-      <ul ref={root}>
+      <ul ref={ul}>
         {visibleItems.map(item => (
           <li key={item}>
             <label>

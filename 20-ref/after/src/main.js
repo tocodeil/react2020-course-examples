@@ -1,16 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 const App = () => {
   const [word1, setWord1] = useState('');
   const [word2, setWord2] = useState('');
-  const refToWord2 = React.createRef();
+  const rootElement = useRef(null);
+  const secondWordRef = useRef(null);
+
+  function showMyThing(e) {
+    const myDomElement = rootElement.current;
+    alert(myDomElement.dataset.myStuff);
+  }
 
   function setFirstWord(val) {
     setWord1(val);
     if (val.endsWith(' ')) {
-      refToWord2.current.focus();      
+      // jump focus to second word
+      secondWordRef.current.focus();
     }
   }
 
@@ -18,11 +25,13 @@ const App = () => {
     setWord2(val);
   }
 
-
   return (
-    <div>
-      <input type="text" value={word1} onChange={(e) => setFirstWord(e.target.value)} />
-      <input type="text" value={word2} onChange={(e) => setSecondWord(e.target.value)} ref={refToWord2} />
+    <div data-my-stuff="hello" ref={rootElement}>
+      <button onClick={showMyThing}>Show My Thing</button>
+      <div>
+        <input type="text" value={word1} onChange={(e) => setFirstWord(e.target.value)} />
+        <input ref={secondWordRef} type="text" value={word2} onChange={(e) => setSecondWord(e.target.value)} />        
+      </div>
     </div>
   )
 };

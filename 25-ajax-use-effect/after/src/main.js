@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import { useState, useEffect } from 'react';
+import { Pokemon } from "./pokemon";
 
 function ShowCharacterInfo(props) {
   const { data } = props;
@@ -40,7 +41,7 @@ const App = () => {
   return (
     <div>
       <input type="number" value={id} onChange={(e) => setId(e.target.value)} />
-      <StarwarsCharacter id={id} />
+      <Pokemon id={id} />
     </div>
   )
 };

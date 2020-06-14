@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Person(props) {
+export default function Person(props: { name: string }) {
     const { name } = props;
     return (
         <div>

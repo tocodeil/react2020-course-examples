@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import { useState, useEffect } from 'react';
-import { Pokemon } from "./pokemon";
 
 function ShowCharacterInfo(props) {
   const { data } = props;
@@ -20,7 +19,7 @@ function StarwarsCharacter(props) {
 
   useEffect(function() {
     setData(null);
-    const $xhr = $.getJSON(`https://swapi.co/api/people/${id}/`, setData);
+    const $xhr = $.getJSON(`https://swapi.dev/api/people/${id}/`, setData);
 
     return function abort() {
       $xhr.abort();
@@ -41,7 +40,7 @@ const App = () => {
   return (
     <div>
       <input type="number" value={id} onChange={(e) => setId(e.target.value)} />
-      <Pokemon id={id} />
+      <StarwarsCharacter id={id} />
     </div>
   )
 };

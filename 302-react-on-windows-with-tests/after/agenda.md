@@ -1,18 +1,13 @@
-# React On Windows
+# React Testing Library
 
-1. Requirements:
-  - Install Node.JS
-  - Install Visual Studio Code
+To run the tests (oneshot) exec from cmd:
 
-2. A New React Project Template
-  - HTML file
-  - JavaScript React file
-  - CSS files
+```
+npx jest
+```
 
-3. Running The Example Project
-  - npx webpack-dev-server -d
-  - npx webpack -p
+To constantly check new code as files change run from cmd:
 
-4. Creating a new component
-  - Add a new JavaScript file
-  - Import the component and show it on screen
+```
+npx jest --watch
+```

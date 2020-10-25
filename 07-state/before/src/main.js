@@ -17,8 +17,8 @@ const App = () => {
         Increase By:
         <input type="number" value={delta} onChange={changeDelta}/>
       </label>
-      <Counter delta={delta}/>
-      <Counter delta={delta}/>
+      <Counter delta={delta} setDelta={setDelta}/>
+      <Counter delta={delta} setDelta={setDelta}/>
     </div>
   )
 };

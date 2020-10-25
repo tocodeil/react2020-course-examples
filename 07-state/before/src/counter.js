@@ -1,11 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
 
-export default function Counter(props) {
+export default function Counter({delta, setDelta}) {
   const [count, setCount] = useState(0);
 
   function inc(){
-    const {delta, setDelta} = props;
     const newVal = old => old+delta;
     if(newVal > 10) {
       setDelta(0);

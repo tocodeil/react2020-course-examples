@@ -13,17 +13,27 @@ function Display(props) {
 
 function Counter(props) {
   const [ count, setCount ] = useState(0);
+  const { maxValue, setMaxValue } = props;
 
   function inc() {
-    setCount(x => x + 1);
+    const newValue = count + 1;
+    setCount(newValue);
+    
+    if (newValue > maxValue) {
+      setMaxValue(newValue);
+    } 
   }
 
   function reset() {
     setCount(0);
   }
 
+  const counterStyle={
+    color: count >= maxValue ? 'darkred' : 'darkgreen'
+  }
+
   return (
-    <div>
+    <div style={counterStyle}>
       <Display score={count} reset={reset} />
       <button onClick={inc}>Click Me</button>
     </div>

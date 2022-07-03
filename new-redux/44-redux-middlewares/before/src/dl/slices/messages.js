@@ -1,8 +1,10 @@
 import { createSlice, createAction, nanoid } from '@reduxjs/toolkit'
 
-const initialState = [
-  { id: 0, from: 'ynon', text: 'Hello Everyone' },
-];
+const initialState = {
+  messages: [
+    { id: 0, from: 'ynon', text: 'Hello Everyone' },
+  ],
+}
 
 export const newMessage = createAction('messages/newMessage', (from, text) => {
   return {
@@ -19,7 +21,7 @@ export const slice = createSlice({
   initialState,
   extraReducers: {
     [newMessage]: (state, action) => {
-      state.push(action.payload);
+      state.messages.push(action.payload);
     }
   },
 });

@@ -1,8 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = [
-  { id: 0, from: 'ynon', text: 'Hello Everyone' },
-];
+const initialState = {
+  messages: [
+    { id: 0, from: 'ynon', text: 'Hello Everyone' },
+  ]
+};
 
 export const slice = createSlice({
   name: 'messages',

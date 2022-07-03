@@ -2,27 +2,15 @@
 √
 
 ## Redux Toolkit
-  - [ ] Redux Boilerplate
-  - [ ] Add Redux Toolkit
-  - [ ] Convert reducer to slice
-  - [ ] Use action creators from JS console
-
+√
 
 ## React Redux
-  - [ ] Provider
-  - [ ] Username <input readOnly /> Component
-  - [ ] Banner Component - show current user name and the name of the active room
-  - [ ] Handle change username
-  - [ ] Redux Devtools
-  - [ ] Your Turn - add message list component
+√
 
 ## Special Actions
-  - [ ] Create actions manually (outside the slice)
-  - [ ] Use an action in multiple slices
-  - [ ] Add unique id to each new message
-  - [ ] Finish our message list component
+√
 
-## Thunks
+## Lab - thunks
   - [ ] Purpose: Extract async/side-effect code
   - [ ] Example: Set username to be the name of a random beer
         https://random-data-api.com/api/beer/random_beer

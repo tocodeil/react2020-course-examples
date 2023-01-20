@@ -5,6 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   entry: './src/main.js',
   mode: 'development',
+  devtool: 'inline-source-map',
   devServer: {
     overlay: true,
     historyApiFallback: true,

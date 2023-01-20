@@ -7,7 +7,9 @@ module.exports = {
   entry: './src/main.js',
   mode: 'development',
   devServer: {
-    overlay: true,
+    client: {
+      overlay: true,
+    },
   },
   module: {
     rules: [      

@@ -3,7 +3,6 @@ import Header from './ui/Header';
 import Banner from './ui/Banner';
 import MessagesList from './ui/MessagesList';
 import NewMessage from './ui/NewMessage';
-import FirebaseListener from './utils/FirebaseListener';
 
 function App() {
   return (
@@ -15,7 +14,6 @@ function App() {
         <hr />
         <NewMessage />
       </main>
-      <FirebaseListener />
     </div>
   );
 }

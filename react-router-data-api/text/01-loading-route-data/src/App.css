@@ -1,0 +1,35 @@
+.App {
+  text-align: center;
+}
+
+nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  padding: 5px;
+}
+
+nav a.active {
+  background: yellow;
+}
+
+.tasks-page {
+  margin-top: 20px;
+  display: flex;
+}
+
+.left {
+  flex-shrink: 0;
+  width: 300px;
+}
+
+.right {
+  flex: 1;
+}
+
+.tasks-page a.active {
+  background: lightgray;
+}
+
+.tasks-page a {
+  text-decoration: none; 
+}

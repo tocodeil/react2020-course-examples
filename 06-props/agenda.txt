@@ -1,5 +1,9 @@
 # Props Agenda
 
+* how to create a new project with vite
+npm create vite@latest
+
+
 * Working on a project with multiple components (files)
 
 * Passing and accepting props

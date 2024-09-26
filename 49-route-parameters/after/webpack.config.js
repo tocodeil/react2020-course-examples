@@ -7,6 +7,7 @@ module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
+    allowedHosts: ["all"],
     overlay: true,
     historyApiFallback: true,
   },
